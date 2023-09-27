@@ -1,39 +1,125 @@
-\documentclass[11pt]{article}
+\documentclass{article}
 
-\usepackage{sectsty}
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[english]{babel}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{amssymb}
 \usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
 
-% Margins
-\topmargin=-0.45in
-\evensidemargin=0in
-\oddsidemargin=0in
-\textwidth=6.5in
-\textheight=9.0in
-\headsep=0.25in
-
-\title{ Title}
-\author{ Author }
-\date{\today}
+\title{MATH 270 Unit 1}
+\author{Miles Kent}
 
 \begin{document}
-\maketitle	
-\pagebreak
+\maketitle
 
-% Optional TOC
-% \tableofcontents
-% \pagebreak
+\section{Test Necessities}
+\begin{enumerate}
+    \item Be able to determine a particular entry in the product of two matrices; the entry in a particular row and column of the matrix product.
 
-%--Paper--
+        Let $A_k$ be the $k^{th}$ row of the matrix $A$
 
-\section{Section 1}
+        Let $b_k$ be the $k^{th}$ column of the matrix $B$
 
-Lorem Impsum
+        $(AB)_{ij} = \vec{A}_i \cdot \vec{b}_j$
 
 
-\pagebreak
-\section{Section 2}
-Lorem Ipsum \\
+    \item Be able to determine if two matrices can be multiplied together and if so determine the dimensions of the product
 
-%--/Paper--
+        Let $A$ equal the 3x4 matrix
+        $\begin{bmatrix}
+        a & b & c & d\\
+        e & f & g & h\\
+        i & j & k & l
+        \end{bmatrix}$
+
+        Let $B$ equal the 4x2 matrix
+        $\begin{bmatrix}
+        A & B\\
+        C & D\\
+        E & F\\
+        G & H
+        \end{bmatrix}$
+
+        The row and columns of a matrix are denoted as rows x columns.
+        For example, A is a 3x4 matrix. Therefore, it has 3 rows and 4 columns.
+        The order of matrix multiplication matters.
+        $A$ and $B$, for example, can only be multiplied $AB$, not $BA$.
+        Look at the dimensions of the matrices. The inner dimensions need to match for multiplication
+        to be possible. The outer dimensions specify the new matrix.
+        $AB$ is 3x4 4x2. The inner dimensions match 3x$\boldsymbol{4\ 4}$x2.
+        The outer dimensions $\boldsymbol{3}$x4 4x$\boldsymbol{2}$ indicate that AB will be 3x2.
+
+    \item Be able to determine if a transformation between vector spaces is a linear transformation.
+
+        A transformation $T$ is a linear transformation if
+
+        1. $T(\vec{u}_1 + \vec{u}_2) = T(\vec{u}_1) + T(\vec{u}_2)$
+
+        2. $T(c\vec{u}_1) = cT(\vec{u}_1)$
+
+    \item Be able to write down the transformation matrix of some given linear transformation.
+
+        Example: $ T: R^2 \longrightarrow R^2 $. Rotation CC by $\theta$
+        Take the basis vectors for the given vector space and transform them by the linear map.
+        The basis vectors for $R$ are $\vec{e}_1, \vec{e}_2$.\\
+
+        $T(\vec{e}_1) =
+        T(\begin{bmatrix}
+        1\\
+        0
+        \end{bmatrix})
+        =
+        \begin{bmatrix}
+        cos(\theta)\\
+        sin(\theta)
+        \end{bmatrix}$
+
+        $T(\vec{e}_2) =
+        T(\begin{bmatrix}
+        0\\
+        1
+        \end{bmatrix})
+        =
+        \begin{bmatrix}
+        -sin(\theta)\\
+        cos(\theta)
+        \end{bmatrix}$
+
+        $\therefore
+        \begin{bmatrix}
+            T
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+        cos(\theta) & -sin(\theta)\\
+        sin(\theta) & cos(\theta)
+        \end{bmatrix}
+        $
+
+
+    \item Be able to find the length of a vector.
+
+    $|\vec{A}| = \sqrt{A_x^2 + A_y^2}$
+
+    \item Be able to find a unit vector (vector of length 1) in the same direction as a given vector.
+
+    $\vec{u} = \frac{\vec{A}}{|\vec{A}|}$
+    \item Be able to find the angle between two vectors.
+
+    $cos(\theta) = \frac{\vec{A} \cdot \vec{B}}{|\vec{A}||\vec{B}|}$
+    \item Be able to determine if two vectors are perpendicular.
+
+    When $\vec{A} \cdot \vec{B} = 0$\\
+    $cos(90^\circ) = \frac{\vec{A} \cdot \vec{B}}{|\vec{A}||\vec{B}|} = 0$
+\end{enumerate}
+
 
 \end{document}
