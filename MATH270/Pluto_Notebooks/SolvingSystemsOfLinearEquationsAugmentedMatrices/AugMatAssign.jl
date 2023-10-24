@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.19.28
+# v0.19.29
 
 using Markdown
 using InteractiveUtils
@@ -179,12 +179,6 @@ As you can see, the result matches the $\vec{x}$ coefficient vector from the beg
 md"""
 ##### EC: Now I will do a system of four equations
 """
-
-# ╔═╡ abeb7093-5afc-4320-aade-06cb12c181f5
-# ╠═╡ disabled = true
-#=╠═╡
-equations(4)
-  ╠═╡ =#
 
 # ╔═╡ e3f6a882-b75e-4bb5-b630-71bd4cdaecfb
 R_aug = 
