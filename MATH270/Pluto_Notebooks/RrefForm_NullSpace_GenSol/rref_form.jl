@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.19.29
+# v0.19.30
 
 using Markdown
 using InteractiveUtils
@@ -126,28 +126,20 @@ md"""
 Consider the matrix ``A0`` below:
 """
 
-# ╔═╡ a0833cfb-510c-4864-ab75-322835423dc0
-# ╠═╡ disabled = true
+# ╔═╡ 9b0cb42b-0700-4103-b89b-1036cf031ee3
 #=╠═╡
-A0, b0 = randmat();
+A0b0 = [A0 b0]; latexify(A0b0) # Augmented matrix
   ╠═╡ =#
 
-# ╔═╡ 4857ff2d-0e9b-4edf-83d6-1aa5d1b391f0
-A0 = [-8//1   8//1  -16//1   32//1;
-       5//1  -7//1   14//1  -30//1;
-       3//1  -4//1    8//1  -17//1]; latexify(A0)
-
-# ╔═╡ c071ce04-7943-4003-b891-0544fbe1207d
-b0 = [-16//1; 20//1; 11//1]; latexify(b0)
-
-# ╔═╡ 9b0cb42b-0700-4103-b89b-1036cf031ee3
-A0b0 = [A0 b0]; latexify(A0b0) # Augmented matrix
-
 # ╔═╡ 07fc1314-19f0-4002-b8b2-246f2326c013
+#=╠═╡
 A0b0rr = rref(A0b0); latexify(A0b0rr) # Reduced row echelon form of augmented matrix
+  ╠═╡ =#
 
 # ╔═╡ 90c7dd8a-cc98-4edb-8fe3-2462cbdfe10f
+#=╠═╡
 A0rr = A0b0rr[:,1:4]; latexify(A0rr) # 
+  ╠═╡ =#
 
 # ╔═╡ 6a11cac8-aacf-4b26-96fc-7215169e3122
 md"""
@@ -155,7 +147,9 @@ md"""
 """
 
 # ╔═╡ 47f9cbe0-ed42-4eb9-83a3-db193aa464aa
+#=╠═╡
 C = A0[:,[1,2]]; latexify(C) # Columns are basis of column space of A0
+  ╠═╡ =#
 
 # ╔═╡ bd816436-6bef-47e2-a0a1-49959a5da653
 md"""
@@ -163,7 +157,9 @@ md"""
 """
 
 # ╔═╡ b612b778-854d-4556-879b-e0cf2ee8cb02
+#=╠═╡
 Arr = A0rr[1:2,:]; latexify(Arr) # Reduced row echelon form of A0
+  ╠═╡ =#
 
 # ╔═╡ 472c021d-713d-4d84-b613-7c1b96778497
 md"""
@@ -171,7 +167,9 @@ md"""
 """
 
 # ╔═╡ 1b86880d-07c5-4817-ace6-96403e5788fd
+#=╠═╡
 A0==C*Arr # A0 factored as C * Arr
+  ╠═╡ =#
 
 # ╔═╡ 10f72d54-8676-4af9-8006-ee90a11bfab7
 md"""
@@ -182,7 +180,9 @@ md"""
 xp = [-3//1; -5//1; 0; 0] # particular solution to Ax = b
 
 # ╔═╡ 6f2574fb-d012-4dc8-bdbc-e507f1d8873e
+#=╠═╡
 F = Arr[:,[3,4]]; latexify(F)
+  ╠═╡ =#
 
 # ╔═╡ 40875b43-4acc-4903-a16e-0e02c2cd246d
 md"""
@@ -190,7 +190,9 @@ md"""
 """
 
 # ╔═╡ 341d0a84-da4d-4be9-a096-077a9a2386a3
+#=╠═╡
 X = [-F; id(2)]; latexify(X) # Columns are basis of null space
+  ╠═╡ =#
 
 # ╔═╡ a33bf853-40a0-44ee-80d7-82c3d3dab5ab
 md"""
@@ -198,7 +200,9 @@ md"""
 """
 
 # ╔═╡ 1f73ea45-ab0e-4ce6-909e-8dc63453a4b0
+#=╠═╡
 testsoln(A0,X,xp,b0) # Check that general solution satisfies Ax = b
+  ╠═╡ =#
 
 # ╔═╡ e2226881-26a2-48d4-8432-95363aeee1dc
 md"""
@@ -208,98 +212,493 @@ For each problem, copy the ``A`` matrices and the ``b`` vectors into the same va
 
 # ╔═╡ 5ebcceff-6597-4cd8-ad9b-fc0c68501833
 md"""
-##### Problem 1
+## Problem 1
 """
 
-# ╔═╡ 3d1cbd4b-c5c2-4d11-bcb0-bfb9db3d6ee4
-Aug1 = [A1 b1]; latexify(Aug1)
-
-# ╔═╡ 21d0e6e2-239f-4d0a-841c-456a1a8c913b
-rrefAug1 = rref(Aug1); latexify(rrefAug1)
+# ╔═╡ 376930a6-5a7a-4b79-9747-4667782b21f2
+md"""
+Get A and b
+"""
 
 # ╔═╡ c07f0afb-c31f-4f2a-b44d-107d99e30dd1
 md"""
- #### Matrix C
+Matrix C
 """
 
 # ╔═╡ 756f1ae9-9e7d-4cac-a642-c91c8ace0294
+#=╠═╡
 C1 = A1[:,1:2]; latexify(C1)
+  ╠═╡ =#
 
 # ╔═╡ 9a5b59f9-8cdd-418b-8759-ce26c4ba6d76
 md"""
-#### Matrix R
+Matrix R
 """
 
 # ╔═╡ 8855270c-1e5b-437b-9cf1-4255317bbc94
-R1 = rrefAug1[1:2,1:4]; latexify(R1)
+#=╠═╡
+R1 = rref(A1)[1:2,:]; latexify(R1)
+  ╠═╡ =#
 
 # ╔═╡ 4d1acbd4-f5b1-401b-a3fb-d6791ea01ac1
 md"""
-#### Verify $A = CR$
+Verify $A = CR$
 """
 
 # ╔═╡ 4ebae229-f9c4-4999-b728-55147253ae04
+#=╠═╡
 A1==C1*R1
+  ╠═╡ =#
 
 # ╔═╡ 32eab404-aee5-4e20-acbb-c6510cb205bd
 md"""
-#### Particular Solution $x_p$
+Particular Solution $x_p$
 """
+
+# ╔═╡ 3d1cbd4b-c5c2-4d11-bcb0-bfb9db3d6ee4
+#=╠═╡
+Aug1 = [A1 b1]; latexify(Aug1)
+  ╠═╡ =#
+
+# ╔═╡ 21d0e6e2-239f-4d0a-841c-456a1a8c913b
+#=╠═╡
+rrefAug1 = rref(Aug1); latexify(rrefAug1)
+  ╠═╡ =#
 
 # ╔═╡ cb3d36f9-5e01-4c37-b68a-74817bcc52d8
 xp1 = [-3//1; 5//1; 0//1; 0//1]; latexify(xp1)
 
-# ╔═╡ 76d8cd59-9225-4aee-b180-cbdca5bbf11c
-A1*xp1==b1
+# ╔═╡ 3db9952d-71c9-4278-8b18-0e9dd770c7bc
+md"""
+Verify solution vector
+"""
 
-# ╔═╡ bd1c6a0b-a464-40c7-b139-020f29ef6a57
-I2_1 = id(2); latexify(I2_1)
+# ╔═╡ 76d8cd59-9225-4aee-b180-cbdca5bbf11c
+#=╠═╡
+A1*xp1==b1
+  ╠═╡ =#
 
 # ╔═╡ 74f40b6d-d36a-45ea-8a74-9842873f7480
+#=╠═╡
 F1 = R1[:,[3,4]]; latexify(F1)
+  ╠═╡ =#
 
-# ╔═╡ 7c4f0fb5-86b1-4245-bc80-f45e7dfe356f
+# ╔═╡ 1c8203aa-e419-44b4-b2f4-b8715a4db732
 md"""
-Null Space null(A1) basis vectors matrix
+Null Space $null(A1) = X1$
 """
+
+# ╔═╡ 3133c50e-397e-4a02-842e-9f2d1c8d2a32
+#=╠═╡
+X1 = [-F1; id(2)]; latexify(X)
+  ╠═╡ =#
+
+# ╔═╡ 7643b589-6ca9-44ce-8eb7-e46b57b52746
+md"""
+Check answers
+"""
+
+# ╔═╡ 3961e0d5-11d7-4b6e-ab30-2827dc8995b8
+#=╠═╡
+testsoln(A1,X1,xp1,b1)
+  ╠═╡ =#
 
 # ╔═╡ b8d9d479-4f0e-4ad9-806c-3659966d7bef
 md"""
-##### Problem 2
+## Problem 2
 """
 
-# ╔═╡ 2e7b97dc-79fa-4b11-8af3-cc5c21d536d8
-A2, b2 = randmat(); latexify(A2)
+# ╔═╡ 9b534e11-8eb2-4a84-8f4e-c8c07dc09d0c
+md"""
+A2
+"""
 
-# ╔═╡ c3cedb6d-27c1-4788-a7d9-1575b0d7c2e9
-latexify(b2)
+# ╔═╡ 6291b193-c494-41c3-8b72-da1815e74914
+md"""
+b2
+"""
+
+# ╔═╡ 05caef70-58e1-4fd4-9209-c6859ad5b9df
+md"""
+C2
+"""
+
+# ╔═╡ 487b9a35-ffd4-4577-bfc7-7143eced603e
+#=╠═╡
+C2 = A2[:,[1,2,3,5]]; latexify(C2) # (4x4)
+  ╠═╡ =#
+
+# ╔═╡ 52758cf5-09ef-41c9-8675-9d083ee49dea
+md"""
+R2
+"""
+
+# ╔═╡ 7466ec52-2a91-4599-96c3-3b99ec5e0044
+#=╠═╡
+R2 = rref(A2); latexify(R2) # (4x7)
+  ╠═╡ =#
+
+# ╔═╡ 6caebf46-9d1f-4262-b754-13240d97ea22
+md"""
+Verify $A2 = C2\cdot R2$
+"""
+
+# ╔═╡ 00ede605-a5bb-48f2-9159-224c2bf59e66
+#=╠═╡
+A2==C2*R2
+  ╠═╡ =#
+
+# ╔═╡ 3f408b05-7dd2-453e-b9cf-d70d58c0e0b9
+md"""
+Particular solution for $x_{p_2}$ given $Ax_{p_2}=b$
+"""
+
+# ╔═╡ 24f96861-b67f-426a-98b0-27e1f7187242
+#=╠═╡
+Aug2 = [A2 b2]; latexify(Aug2)
+  ╠═╡ =#
+
+# ╔═╡ b9db5928-73d6-49f2-b408-0026cf45c188
+#=╠═╡
+rrefAug2 = rref(Aug2); latexify(rrefAug2)
+  ╠═╡ =#
+
+# ╔═╡ 5b08db44-d3fa-4c03-8ca4-9e040ce1dfb7
+md"""
+Pivot: $x_1,\ x_2,\ x_3,\ x_5$
+
+Free: $x_4,\ x_6,\ x_7$
+
+$x_1 + 3x_4 + x_6 = 14$
+$x_2 + 4x_4 + \frac{-3}{4}x_6 + -3x_7 = \frac{-3}{4}$
+$x_3 + \frac{3}{4}x_6 = \frac{7}{4}$
+$x_5 + \frac{1}{4}x_6 = \frac{9}{4}$
+
+Let $x_4, x_6, x_7 = 0$
+
+$x_1 = 14$
+$x_2 = \frac{-3}{4}$
+$x_3 = \frac{7}{4}$
+$x_5 = \frac{9}{4}$
+"""
+
+# ╔═╡ 3acba1f0-9106-45fe-ad83-bb232e183db6
+md"""
+Therefore, $x_{p_2}$
+"""
+
+# ╔═╡ ce50f85c-dcac-443e-9df6-4579af63edb5
+xp2 = [
+14//1;
+-3//4;
+7//4;
+0//1;
+9//4;
+0//1;
+0//1
+];latexify(xp2)
+
+# ╔═╡ 2159680f-e592-443b-a7c1-9a8486bcfcc5
+md"""
+Verify that $x_{p_2}$ is a solution
+"""
+
+# ╔═╡ bdd7a637-7237-4913-b07d-480df014eda5
+#=╠═╡
+A2*xp2==b2 # (4x7) x (7x1) == (4x1)
+  ╠═╡ =#
+
+# ╔═╡ e10518d1-a6cc-44b9-8806-6bb5818adefe
+md"""
+Get $X2\ null(A2)$
+"""
+
+# ╔═╡ 56de01d5-b0ac-4933-8982-b7eace96e4c7
+md"""
+Get $I$ and $F$
+"""
+
+# ╔═╡ 2aeecbdc-5886-4ef0-96f0-e56cc15e441f
+P2 = [
+ 1//1  0//1  0//1  0//1  0//1  0//1  0//1;
+ 0//1  1//1  0//1  0//1  0//1  0//1  0//1;
+ 0//1  0//1  1//1  0//1  0//1  0//1  0//1;
+ 0//1  0//1  0//1  0//1  1//1  0//1  0//1;
+ 0//1  0//1  0//1  1//1  0//1  0//1  0//1;
+ 0//1  0//1  0//1  0//1  0//1  1//1  0//1;
+ 0//1  0//1  0//1  0//1  0//1  0//1  1//1
+]
+
+# ╔═╡ 62613403-be91-4b9a-9918-fdaf2126f075
+md"""
+Need to swap columns
+"""
+
+# ╔═╡ 7b3e70ef-919a-4124-9278-286f4a324736
+#=╠═╡
+IF_2 = R2*inv(P2); latexify(IF_2)
+  ╠═╡ =#
+
+# ╔═╡ 3be207ef-609c-4bec-ad44-338309ea6e26
+md"""
+F2
+"""
+
+# ╔═╡ cb42e7da-0316-4197-a0e2-5fd291bd7961
+#=╠═╡
+F2 = IF_2[:,5:7]; latexify(F2)
+  ╠═╡ =#
+
+# ╔═╡ 0d23d964-e414-4752-b796-32b0a5059782
+md"""
+X2
+"""
+
+# ╔═╡ 8ba8bba0-78ee-459e-bcb9-6e6d7e89a8ea
+#=╠═╡
+X2 = P2*[-F2; id(3)]; latexify(X2)
+  ╠═╡ =#
+
+# ╔═╡ 6b3bdc68-c947-44b8-b735-e6ac11c95aaf
+md"""
+Verify answers
+"""
+
+# ╔═╡ e07d103d-b4f3-4a38-bcce-ebfce0aff47e
+#=╠═╡
+testsoln(A2,X2,xp2,b2)
+  ╠═╡ =#
 
 # ╔═╡ dc6e4adb-d7d3-4d35-afe3-7c7eb1f3ec51
 md"""
-##### Problem 3
+## Problem 3
 """
 
-# ╔═╡ 83724a2a-b8ec-4008-a02c-e7ff535f6f87
-A3, b3 = randmat(); latexify(A3)
+# ╔═╡ 4d9ef731-af28-4199-8fb4-5d76e1b34f48
+md"""
+A3
+"""
 
-# ╔═╡ 2189aa54-5ec3-4da7-abf1-86633bcc3b3d
-latexify(b3)
+# ╔═╡ 45dc13a3-8b86-4a67-96c0-cf5d0acc16c3
+md"""
+b3
+"""
+
+# ╔═╡ da1976b1-c919-4952-967e-626e5dce49d6
+md"""
+##### Find matrices ``C`` and ``R``
+"""
+
+# ╔═╡ 612b0be8-30ad-4c9c-8963-3ce80e184f28
+md"""
+Get R3
+"""
+
+# ╔═╡ 52edd707-f4af-408b-88a9-badd118680a4
+#=╠═╡
+R3 = rref(A3); latexify(R3) # C3 has 3 columns
+  ╠═╡ =#
+
+# ╔═╡ ca736e58-11bd-44ba-a351-1b840b9ad5cf
+md"""
+Get C3
+"""
+
+# ╔═╡ 0d3994fd-8e46-4935-acea-bc694865e7c5
+#=╠═╡
+C3 = A3[:,[1,2,4]]; latexify(C3)
+  ╠═╡ =#
+
+# ╔═╡ 88ac7c33-072c-4b41-8e1b-00f6e0f9a64f
+md"""
+##### Show that ``A = CR``
+"""
+
+# ╔═╡ 2ceecff9-9e2f-47e0-915a-f90da5cccd41
+#=╠═╡
+A3==C3*R3
+  ╠═╡ =#
+
+# ╔═╡ 414bca39-b27d-4622-a8a7-01131ce7d196
+md"""
+##### Find a particular solution to ``Ax = b``
+"""
+
+# ╔═╡ b97fddc5-98e7-4709-8405-e74ea7496fdc
+#=╠═╡
+Aug3 = [A3 b3]; latexify(Aug3)
+  ╠═╡ =#
+
+# ╔═╡ 0a883cc9-d9d2-4759-97c8-5c00e2aa10b9
+#=╠═╡
+rrefAug3 = rref(Aug3); latexify(rrefAug3)
+  ╠═╡ =#
+
+# ╔═╡ bde49881-5857-44db-aedd-28f353a7aacd
+md"""
+Pivot: $x_1,\ x_2,\ x_4$
+
+Free: $x_3,\ x_5,\ x_6,\ x_7$
+
+$x_1 = \frac{2983}{79}$
+$x_2 = \frac{486}{79}$
+$x_4 = \frac{-212}{79}$
+"""
+
+# ╔═╡ ca43081c-2283-4259-89c4-78234d57d5c8
+xp3 = [
+2983//79;
+486//79;
+0//1;
+-212//79;
+0//1;
+0//1;
+]; latexify(xp3)
+
+# ╔═╡ 5b8d2668-f9e8-45bc-9c63-62511f2e7670
+md"""
+Verify the x vector solves the equation
+"""
+
+# ╔═╡ 109afa0f-2b9f-44c2-82e5-ecf7850c62ed
+#=╠═╡
+A3*xp3==b3
+  ╠═╡ =#
+
+# ╔═╡ aca62aab-1f20-4d48-a66b-414e094589cf
+md"""
+##### Find the matrix ``X`` of null space basis vectors
+"""
+
+# ╔═╡ dae18a31-73a5-45b3-af4f-6a0b1981fcd4
+#=╠═╡
+latexify(R3)
+  ╠═╡ =#
+
+# ╔═╡ 95a9e4cd-8050-481f-80f7-0bc71d1abc37
+P3 = 
+[
+ 1//1  0//1  0//1  0//1  0//1  0//1;
+ 0//1  1//1  0//1  0//1  0//1  0//1;
+ 0//1  0//1  0//1  1//1  0//1  0//1;
+ 0//1  0//1  1//1  0//1  0//1  0//1;
+ 0//1  0//1  0//1  0//1  1//1  0//1;
+ 0//1  0//1  0//1  0//1  0//1  1//1
+]
+
+# ╔═╡ 70f54f83-d1c0-4134-a6a5-58d8d2cf3b99
+#=╠═╡
+IF_3 = R3*inv(P3); latexify(IF_3)
+  ╠═╡ =#
+
+# ╔═╡ cbc19333-dc09-4ed1-a642-2d759e46a202
+#=╠═╡
+F3 = IF_3[:,4:6]; latexify(F3)
+  ╠═╡ =#
+
+# ╔═╡ 812965a5-a47f-4cea-9cc5-f738f42e86a1
+#=╠═╡
+X3 = P3*[-F3; id(3)]; latexify(X3)
+  ╠═╡ =#
+
+# ╔═╡ ed24a0b1-1b88-4b2e-8f49-2043d4dcecc3
+md"""
+##### Use the testsoln function to check your answers.
+"""
+
+# ╔═╡ 44ff6929-e82c-4eab-8c76-d40e6bd689c0
+#=╠═╡
+testsoln(A3,X3,xp3,b3)
+  ╠═╡ =#
+
+# ╔═╡ 6bbd0cda-2ec7-4dbe-82a6-3cafb7c2ea99
+#=╠═╡
+b1 = [  3//1;
+ 61//1;
+ 43//1]
+  ╠═╡ =#
+
+# ╔═╡ c071ce04-7943-4003-b891-0544fbe1207d
+#=╠═╡
+b0 = [-16//1; 20//1; 11//1]; latexify(b0)
+  ╠═╡ =#
+
+# ╔═╡ 83724a2a-b8ec-4008-a02c-e7ff535f6f87
+# ╠═╡ disabled = true
+#=╠═╡
+A3, b3 = randmat(); latexify(A3)
+  ╠═╡ =#
+
+# ╔═╡ a0833cfb-510c-4864-ab75-322835423dc0
+# ╠═╡ disabled = true
+#=╠═╡
+A0, b0 = randmat();
+  ╠═╡ =#
+
+# ╔═╡ c98f5941-641a-48a0-bace-9e49a69f98f1
+#=╠═╡
+b3 = 
+[
+  68//1;
+ -25//1;
+  82//1
+];latexify(b3)
+  ╠═╡ =#
+
+# ╔═╡ 843ac133-d0d3-43c5-9534-7406a271226f
+#=╠═╡
+b2 =[
+ 102//1;
+  13//1;
+ -43//1;
+ -56//1
+]; latexify(b2)
+  ╠═╡ =#
+
+# ╔═╡ 4857ff2d-0e9b-4edf-83d6-1aa5d1b391f0
+#=╠═╡
+A0 = [-8//1   8//1  -16//1   32//1;
+       5//1  -7//1   14//1  -30//1;
+       3//1  -4//1    8//1  -17//1]; latexify(A0)
+  ╠═╡ =#
+
+# ╔═╡ 097bcd12-233a-40ab-bba4-351ff7398461
+#=╠═╡
+A1 = [-6//1  -3//1   6//1  21//1;
+ -32//1  -7//1  -4//1  31//1;
+ -26//1  -7//1   2//1  37//1]
+  ╠═╡ =#
+
+# ╔═╡ 2e7b97dc-79fa-4b11-8af3-cc5c21d536d8
+# ╠═╡ disabled = true
+#=╠═╡
+A2, b2 = randmat();
+  ╠═╡ =#
+
+# ╔═╡ 3d4fee47-a8ed-444b-aa05-67afc845b7e6
+#=╠═╡
+A2 =[
+  4//1   6//1  -2//1   36//1   24//1   4//1  -18//1;
+ -3//1   3//1  -2//1    3//1   27//1   0//1   -9//1;
+ -2//1  -2//1   6//1  -14//1  -12//1   1//1    6//1;
+  9//1  -9//1   4//1   -9//1  -87//1  -3//1   27//1
+]; latexify(A2) # (4x7)
+  ╠═╡ =#
+
+# ╔═╡ 164480c3-9e70-4695-af42-88f8bfc3edc1
+#=╠═╡
+A3 = [
+  0//1   8//1  8//1  -7//1  -22//1  -9//1;
+ -1//1   6//1  5//1   9//1  -21//1   0//1;
+  2//1  -2//1  0//1  -7//1  -16//1  -9//1
+];latexify(A3)
+  ╠═╡ =#
 
 # ╔═╡ d44f7b94-e2e5-4c92-970b-32ffffc81fa1
 # ╠═╡ disabled = true
 #=╠═╡
 A1, b1 = randmat(); 
   ╠═╡ =#
-
-# ╔═╡ 6bbd0cda-2ec7-4dbe-82a6-3cafb7c2ea99
-b1 = [  3//1;
- 61//1;
- 43//1]
-
-# ╔═╡ 097bcd12-233a-40ab-bba4-351ff7398461
-A1 = [-6//1  -3//1   6//1  21//1;
- -32//1  -7//1  -4//1  31//1;
- -26//1  -7//1   2//1  37//1]
 
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
@@ -648,10 +1047,9 @@ version = "17.4.0+0"
 # ╟─e2226881-26a2-48d4-8432-95363aeee1dc
 # ╟─5ebcceff-6597-4cd8-ad9b-fc0c68501833
 # ╠═d44f7b94-e2e5-4c92-970b-32ffffc81fa1
-# ╠═097bcd12-233a-40ab-bba4-351ff7398461
-# ╠═6bbd0cda-2ec7-4dbe-82a6-3cafb7c2ea99
-# ╠═3d1cbd4b-c5c2-4d11-bcb0-bfb9db3d6ee4
-# ╠═21d0e6e2-239f-4d0a-841c-456a1a8c913b
+# ╟─376930a6-5a7a-4b79-9747-4667782b21f2
+# ╟─097bcd12-233a-40ab-bba4-351ff7398461
+# ╟─6bbd0cda-2ec7-4dbe-82a6-3cafb7c2ea99
 # ╟─c07f0afb-c31f-4f2a-b44d-107d99e30dd1
 # ╠═756f1ae9-9e7d-4cac-a642-c91c8ace0294
 # ╟─9a5b59f9-8cdd-418b-8759-ce26c4ba6d76
@@ -659,16 +1057,74 @@ version = "17.4.0+0"
 # ╟─4d1acbd4-f5b1-401b-a3fb-d6791ea01ac1
 # ╠═4ebae229-f9c4-4999-b728-55147253ae04
 # ╟─32eab404-aee5-4e20-acbb-c6510cb205bd
+# ╠═3d1cbd4b-c5c2-4d11-bcb0-bfb9db3d6ee4
+# ╠═21d0e6e2-239f-4d0a-841c-456a1a8c913b
 # ╠═cb3d36f9-5e01-4c37-b68a-74817bcc52d8
+# ╟─3db9952d-71c9-4278-8b18-0e9dd770c7bc
 # ╠═76d8cd59-9225-4aee-b180-cbdca5bbf11c
-# ╠═bd1c6a0b-a464-40c7-b139-020f29ef6a57
 # ╠═74f40b6d-d36a-45ea-8a74-9842873f7480
-# ╟─7c4f0fb5-86b1-4245-bc80-f45e7dfe356f
+# ╟─1c8203aa-e419-44b4-b2f4-b8715a4db732
+# ╠═3133c50e-397e-4a02-842e-9f2d1c8d2a32
+# ╟─7643b589-6ca9-44ce-8eb7-e46b57b52746
+# ╠═3961e0d5-11d7-4b6e-ab30-2827dc8995b8
 # ╟─b8d9d479-4f0e-4ad9-806c-3659966d7bef
 # ╠═2e7b97dc-79fa-4b11-8af3-cc5c21d536d8
-# ╠═c3cedb6d-27c1-4788-a7d9-1575b0d7c2e9
+# ╟─9b534e11-8eb2-4a84-8f4e-c8c07dc09d0c
+# ╠═3d4fee47-a8ed-444b-aa05-67afc845b7e6
+# ╟─6291b193-c494-41c3-8b72-da1815e74914
+# ╠═843ac133-d0d3-43c5-9534-7406a271226f
+# ╟─05caef70-58e1-4fd4-9209-c6859ad5b9df
+# ╠═487b9a35-ffd4-4577-bfc7-7143eced603e
+# ╟─52758cf5-09ef-41c9-8675-9d083ee49dea
+# ╠═7466ec52-2a91-4599-96c3-3b99ec5e0044
+# ╟─6caebf46-9d1f-4262-b754-13240d97ea22
+# ╠═00ede605-a5bb-48f2-9159-224c2bf59e66
+# ╟─3f408b05-7dd2-453e-b9cf-d70d58c0e0b9
+# ╠═24f96861-b67f-426a-98b0-27e1f7187242
+# ╠═b9db5928-73d6-49f2-b408-0026cf45c188
+# ╟─5b08db44-d3fa-4c03-8ca4-9e040ce1dfb7
+# ╟─3acba1f0-9106-45fe-ad83-bb232e183db6
+# ╠═ce50f85c-dcac-443e-9df6-4579af63edb5
+# ╟─2159680f-e592-443b-a7c1-9a8486bcfcc5
+# ╠═bdd7a637-7237-4913-b07d-480df014eda5
+# ╟─e10518d1-a6cc-44b9-8806-6bb5818adefe
+# ╟─56de01d5-b0ac-4933-8982-b7eace96e4c7
+# ╟─2aeecbdc-5886-4ef0-96f0-e56cc15e441f
+# ╟─62613403-be91-4b9a-9918-fdaf2126f075
+# ╠═7b3e70ef-919a-4124-9278-286f4a324736
+# ╟─3be207ef-609c-4bec-ad44-338309ea6e26
+# ╠═cb42e7da-0316-4197-a0e2-5fd291bd7961
+# ╟─0d23d964-e414-4752-b796-32b0a5059782
+# ╠═8ba8bba0-78ee-459e-bcb9-6e6d7e89a8ea
+# ╟─6b3bdc68-c947-44b8-b735-e6ac11c95aaf
+# ╠═e07d103d-b4f3-4a38-bcce-ebfce0aff47e
 # ╟─dc6e4adb-d7d3-4d35-afe3-7c7eb1f3ec51
 # ╠═83724a2a-b8ec-4008-a02c-e7ff535f6f87
-# ╠═2189aa54-5ec3-4da7-abf1-86633bcc3b3d
+# ╟─4d9ef731-af28-4199-8fb4-5d76e1b34f48
+# ╠═164480c3-9e70-4695-af42-88f8bfc3edc1
+# ╟─45dc13a3-8b86-4a67-96c0-cf5d0acc16c3
+# ╠═c98f5941-641a-48a0-bace-9e49a69f98f1
+# ╟─da1976b1-c919-4952-967e-626e5dce49d6
+# ╟─612b0be8-30ad-4c9c-8963-3ce80e184f28
+# ╠═52edd707-f4af-408b-88a9-badd118680a4
+# ╟─ca736e58-11bd-44ba-a351-1b840b9ad5cf
+# ╠═0d3994fd-8e46-4935-acea-bc694865e7c5
+# ╟─88ac7c33-072c-4b41-8e1b-00f6e0f9a64f
+# ╠═2ceecff9-9e2f-47e0-915a-f90da5cccd41
+# ╟─414bca39-b27d-4622-a8a7-01131ce7d196
+# ╠═b97fddc5-98e7-4709-8405-e74ea7496fdc
+# ╠═0a883cc9-d9d2-4759-97c8-5c00e2aa10b9
+# ╟─bde49881-5857-44db-aedd-28f353a7aacd
+# ╠═ca43081c-2283-4259-89c4-78234d57d5c8
+# ╟─5b8d2668-f9e8-45bc-9c63-62511f2e7670
+# ╠═109afa0f-2b9f-44c2-82e5-ecf7850c62ed
+# ╟─aca62aab-1f20-4d48-a66b-414e094589cf
+# ╠═dae18a31-73a5-45b3-af4f-6a0b1981fcd4
+# ╠═95a9e4cd-8050-481f-80f7-0bc71d1abc37
+# ╠═70f54f83-d1c0-4134-a6a5-58d8d2cf3b99
+# ╠═cbc19333-dc09-4ed1-a642-2d759e46a202
+# ╠═812965a5-a47f-4cea-9cc5-f738f42e86a1
+# ╟─ed24a0b1-1b88-4b2e-8f49-2043d4dcecc3
+# ╠═44ff6929-e82c-4eab-8c76-d40e6bd689c0
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
